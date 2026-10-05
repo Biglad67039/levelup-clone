@@ -1,0 +1,16 @@
+# Personal photos and resume
+/assets/me/
+/assets/resume/
+
+# Documents that may contain personal or confidential information
+*.pdf
+*.doc
+*.docx
+*.xls
+*.xlsx
+*.ppt
+*.pptx
+
+# Local backup and Windows shortcut
+/backup-before-redesign/
+/assets - Shortcut.lnk

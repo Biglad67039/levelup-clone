@@ -1,0 +1,278 @@
+# MCPFlow — Toheeb Onifade, Claude Code Expert
+
+> MCPFlow is the studio of Toheeb Onifade, a Claude Code expert who builds AI agents, Model Context Protocol (MCP) servers, and production-grade automation for agencies and service businesses. He connects GoHighLevel, HubSpot, Shopify, n8n, web development, SEO, and paid acquisition into one growth system, and rebuilds workflows with retries, audit logs, and Slack alerts so they never fail silently.
+
+## Key facts
+- Name: Toheeb Onifade
+- Role: Claude Code Expert | AI Agents & MCP Servers | GHL, HubSpot, Shopify, n8n
+- Brand: MCPFlow
+- Works: remotely, with clients worldwide; business hours 10:00–17:00 WAT (Nigeria)
+- Track record: 19 production builds; 100+ automations running in production
+- Offer: share one manual task and receive a Loom video plan within 24 hours
+- Contact: onifadetoheeb068@gmail.com
+- Upwork: https://www.upwork.com/freelancers/~01fcc091d5daa7f215
+
+## Pages
+- [Home](index.html): services, industries, process, case studies, FAQ
+- [Resume](resume.html): skills, case studies, stack
+- [Resume (Word download)](assets/resume/Toheeb-Onifade-Resume.docx)
+
+## Services
+- GoHighLevel systems: CRM flows, lead capture, follow-ups, automations, dashboards
+- Claude Code AI agents and multi-agent systems for GHL, HubSpot, and Shopify
+- MCP server development: secure, documented tool connections with least-privilege keys and audit logs
+- n8n workflow automation and automation rescue (Zapier/Make/n8n) with retries and alerts
+- AI voice receptionist and missed-call automation (Twilio + GHL)
+- Shopify RAG support bots grounded in live store data
+- CRM migrations: HubSpot, ClickFunnels, ActiveCampaign to GoHighLevel
+- Web development, SEO, and PPC / paid acquisition
+- White-label AI SaaS and GHL snapshots for agencies
+
+## Case studies
+### Dental Clinic MCP Operations
+- Category: Web Application · Integrations (MCP)
+- Challenge: A dental clinic using CareStack and a custom web app was copying patient data, appointments, and billing manually. The process consumed about 10 hours a week, caused missed follow-ups, and API rate limits failed silently.
+- Solution: Built an MCP server with Claude Code to connect CareStack, the web app, and n8n. Booking, Billing, and Alert agents sync appointments, update records, and report API failures. Access is protected with scoped keys, Supabase RLS, and audit logs. Staff can start a workflow by saying “sync today’s patients.”
+- Result: 12 hours per week saved, zero missed handoffs, and API failure alerts reduced from as long as 3 days to 12 seconds in Slack. The workflows run in production and are usable by non-technical staff.
+- Stack: Claude Code, MCP Server, CareStack API, n8n, Supabase RLS, Node.js
+
+### Flurth Lip Care · Shopify RAG Support Bot
+- Category: E-Commerce · Shopify RAG Bot
+- Challenge: Flurth Korean lip-care support handled around 200 tickets a day. Its bot guessed at order tracking and inventory, while shoppers asked whether products were authentic. Conversion was 1.1%.
+- Solution: Built a Shopify RAG support bot grounded in live Shopify Admin API data through MCP. Claude retrieves order, inventory, and shipping details, then uses Pinecone RAG for product knowledge. The agent handles returns and exchanges and can update HubSpot and GoHighLevel.
+- Result: Support volume down 38%, response time improved from 15 minutes to 45 seconds, CSAT up 28%, conversion rose from 1.1% to 2.8%, and AI upsells increased AOV by 18%.
+- Stack: Claude Code, Shopify Admin API, MCP Server, Pinecone RAG, HubSpot, GoHighLevel
+
+### Squeaky Clean NJ · Booking Funnel
+- Category: Web Development · GoHighLevel
+- Challenge: A New Jersey cleaning company had a WordPress site and GoHighLevel, but leads were moved manually. Airbnb hosts requested cleanings, calendars were double-booked, and about 8 hours a week were lost to missed bookings and admin.
+- Solution: Rebuilt the funnel with Claude Code and Next.js, connecting GoHighLevel custom actions through MCP and n8n. The flow qualifies Airbnb, office, and property requests, tags leads, creates pipeline records, books the calendar, and starts AI follow-up. A reusable snapshot supports franchise rollout.
+- Result: 8 hours per week saved, booking rate up 32%, and zero double-bookings. The team can start the process with “qualify cleaning leads.”
+- Stack: Claude Code, Next.js, GoHighLevel API, MCP Server, n8n, Calendar API
+
+### AI Voice Receptionist · 24/7 Lead Booking
+- Category: AI Agents & Automation · AI Phone Receptionist
+- Challenge: An agency missed about 40% of calls after hours. Staff updated GoHighLevel manually, callers were not qualified, and leads went cold. The business needed reliable call coverage.
+- Solution: Built a Claude voice agent with Twilio and MCP. It qualifies inbound callers, updates GoHighLevel, books the calendar, and sends transcripts to Slack. Specialist agents handle qualification, booking, and follow-up, with a human handoff that includes the transcript.
+- Result: More than 300 calls handled in 30 days, 150+ qualified, 70+ booked, and all calls answered during the measured period. 67% were qualified; follow-up email open rate reached 42%.
+- Stack: Claude Code, Twilio, GoHighLevel, MCP Server, Claude Voice API
+
+### Real Estate IDX · Instant Valuation
+- Category: Web Development · GoHighLevel
+- Challenge: A real estate agency’s WordPress IDX took 4.2 seconds to load. Zillow leads were moved into GoHighLevel manually, taking about 15 hours a week, while response time averaged 12 minutes.
+- Solution: Built a headless Next.js experience with Supabase and GoHighLevel custom actions through MCP. IDX searches trigger buyer or seller qualification, create a pipeline record, and start an AI nurture flow that can book a valuation.
+- Result: Page speed improved from 4.2 seconds to 0.9 seconds, 15 hours per week saved, response time reduced from 12 minutes to 48 seconds, and the agency reported three additional closings per month.
+- Stack: Claude Code, Next.js, Supabase RLS, GoHighLevel API, MCP, n8n
+
+### Multi-Tenant SaaS Dashboard · Secure by Default
+- Category: Web Application · SaaS Dashboard
+- Challenge: A SaaS dashboard had no row-level security, allowing users to see data outside their organization. Agents were failing in production and page loads took 3.1 seconds.
+- Solution: Rebuilt the application with Claude Code, Supabase RLS, and Claude Agent SDK. Billing, Support, and Onboarding agents have separate responsibilities; hooks synchronize state and surface failures. RLS scopes access by user and organization.
+- Result: Data access is isolated by user and organization, load time improved from 3.1 to 0.6 seconds, and support tickets fell 42%.
+- Stack: Claude Code, Supabase, PostgreSQL RLS, Claude Agent SDK, Pinecone
+
+### Shopify Headless Store · Live Inventory RAG
+- Category: E-Commerce · Shopify Headless
+- Challenge: A slow Shopify theme and a generic support bot that guessed at inventory were limiting shopper confidence. Store conversion was 1.1%.
+- Solution: Built a headless Next.js storefront using the Shopify Storefront API and an MCP-connected RAG support bot. Answers use live stock, shipping, and order data plus Pinecone product knowledge.
+- Result: Conversion improved from 1.1% to 2.8%, response time fell from 18 minutes to 52 seconds, and support volume fell 35%.
+- Stack: Claude Code, Shopify Admin + Storefront API, Next.js, MCP, Pinecone RAG
+
+### Agency Workflow Rebuild · 20 Core Automations
+- Category: Hire Experts · Agency Automation
+- Challenge: An agency had more than 100 Zapier and Make workflows breaking weekly. The team waited on developers and spent about 20 hours per week fixing automations.
+- Solution: Audited the stack with Claude Code and rebuilt 20 core workflows in n8n with MCP servers. Added clear workflow names, documentation, and Loom handover so the team can run routine work themselves.
+- Result: 20 hours per week saved and silent failures removed from the rebuilt workflows. Staff can trigger common work by name, such as “run weekly follow-up.”
+- Stack: Claude Code, MCP Servers, n8n, GoHighLevel, HubSpot, Shopify
+
+### HubSpot Lead Qualification Agent
+- Category: AI Agents & Automation · Lead Qualification
+- Challenge: Sales development reps manually qualified around 200 HubSpot leads per day, resulting in inconsistent scoring and tagging.
+- Solution: Built a lead qualifier with Claude Code, a HubSpot private app, and GoHighLevel through MCP. It reads submitted form data and available customer context, scores the lead, applies tags, and enrolls the appropriate sequence.
+- Result: Qualification time improved from 8 minutes to 22 seconds per lead, up to 200 leads can be processed daily, and meeting volume increased 47%.
+- Stack: Claude Code, Claude API, HubSpot API, GoHighLevel API, MCP, Prompt Engineering
+
+### E-Commerce Support, Sales & Upsell Agents
+- Category: AI Agents & Automation · Multi-Agent System
+- Challenge: A single general-purpose bot struggled to handle support questions, sales conversations, and inventory checks reliably.
+- Solution: Designed a main agent that delegates to Support, Sales, and Upsell specialists. Each specialist has a focused prompt, MCP tools, and hooks; support can retrieve live order information and upsell checks live inventory.
+- Result: Resolution rate improved from 61% to 89%, average order value rose 18%, and the system ran for 60 days without a reported breakage.
+- Stack: Claude Code, Claude Agent SDK, MCP Servers, Shopify, Supabase
+
+### n8n Workflow Rescue · No Silent Failures
+- Category: AI Agents & Automation · Workflow Automation
+- Challenge: Workflows followed only the happy path, broke on API limits, and had no alerts. A failure could leave leads untouched for days.
+- Solution: Rebuilt workflows with Claude Code and n8n, adding hooks, try/catch handling, automatic retries, Slack or email alerts, and audit logs.
+- Result: No cold leads in the tracked workflows, failure alerts improved from 3 days to 12 seconds, and operations saved 14 hours per week.
+- Stack: Claude Code, n8n, MCP Servers, GoHighLevel, Twilio, Slack
+
+### HubSpot + Shopify + GHL MCP Sync
+- Category: Integrations · MCP Server
+- Challenge: HubSpot form submissions, Shopify orders, and GoHighLevel opportunities were out of sync, leaving teams without a reliable shared view.
+- Solution: Built a custom Node.js MCP server with least-privilege keys, audit logs, and RLS-aware data access. Claude can read live data across all three systems and coordinate approved sync actions.
+- Result: The connected workflows reached 100% sync in the monitored process and saved about 11 hours per week. Customer data remains in the connected systems and is not used for model training.
+- Stack: Claude Code, MCP, HubSpot API, Shopify API, GoHighLevel API, Node.js
+
+### Claude API · Personalized GHL Follow-Up
+- Category: Integrations · Claude API
+- Challenge: GoHighLevel emails felt generic, with an 18% open rate. Staff wrote follow-ups manually using limited customer context.
+- Solution: Connected the Claude API to GoHighLevel custom actions through MCP. A tested agent drafts personalized follow-ups from approved live CRM context.
+- Result: Open rate increased from 18% to 42%, replies increased 31%, and the team saved six hours per week.
+- Stack: Claude Code, Claude API, GHL Custom Actions, MCP, n8n
+
+### Twilio + GHL Missed-Call Booking
+- Category: AI Agents & Automation · Voice AI
+- Challenge: Around 40% of calls were missed after hours, and staff had to update GoHighLevel by hand after each conversation.
+- Solution: Connected Twilio to a Claude voice agent that qualifies callers, updates GoHighLevel, books the calendar through MCP, and posts the transcript to Slack.
+- Result: More than 300 calls handled, 150+ qualified, 70+ booked, and zero missed calls in the tracked workflow.
+- Stack: Claude Code, Twilio, GoHighLevel, MCP, Claude Voice
+
+### Stripe + Shopify + GHL Subscription Sync
+- Category: Integrations · MCP Automation
+- Challenge: Stripe subscriptions, Shopify orders, and GoHighLevel CRM records were reconciled manually, and churn risk was not tracked consistently.
+- Solution: Connected Stripe, Shopify, and GoHighLevel with n8n and MCP. Failed payments can trigger AI-supported retry flows, churn-risk tags, and win-back follow-up.
+- Result: Churn decreased 22%, failed-payment recovery improved 38%, and finance operations saved nine hours per week.
+- Stack: Claude Code, Stripe API, Shopify API, GoHighLevel API, n8n, MCP
+
+### ClickFunnels to GHL AI Migration
+- Category: Migration & Rescue · Funnel Migration
+- Challenge: A slow ClickFunnels setup had no connected CRM automation, and leads were moved into GoHighLevel manually.
+- Solution: Migrated funnel structure into GoHighLevel, mapped pipeline data, rebuilt AI follow-up agents, and created a reusable snapshot with Claude Code and MCP.
+- Result: Page speed improved from 3.8 seconds to 0.9 seconds, migration completed in two days, and the process saved 10 hours per week.
+- Stack: Claude Code, GoHighLevel, ClickFunnels API, n8n, MCP
+
+### HubSpot to GHL History-Preserving Migration
+- Category: Migration & Rescue · CRM Migration
+- Challenge: The business wanted to move from HubSpot Enterprise to GoHighLevel but was concerned about losing history or breaking workflows.
+- Solution: Migrated contacts, deals, and sequences from HubSpot to GoHighLevel through MCP, preserved historical records, and added AI qualification and booking agents.
+- Result: Saved $1,200 per month, completed migration in three days with history intact, and bookings increased 28%.
+- Stack: Claude Code, HubSpot API, GoHighLevel API, MCP, Supabase
+
+### Automation Rescue · 47 Workflow Audit
+- Category: Migration & Rescue · Automation Rescue
+- Challenge: 47 Zapier, Make, and n8n workflows were failing silently due to rate limits and missing error handling, leaving leads cold.
+- Solution: Audited the systems with Claude Code and rebuilt 20 core workflows in n8n and MCP with try/catch handling, retries, Slack alerts, and audit logs.
+- Result: Zero silent failures across 45 tracked days, alerts improved from two days to 15 seconds, and the team saved 18 hours per week.
+- Stack: Claude Code, n8n, Zapier, Make.com, MCP Servers, GHL, HubSpot
+
+### White Label AI SaaS · Agency Platform
+- Category: Funnels & AI SaaS · White Label
+- Challenge: An agency wanted a white-label SaaS offer, but its generic platform lacked AI and RAG support. Client churn had reached 24%.
+- Solution: Built a Next.js front end with GoHighLevel SaaS mode, an AI support bot grounded in live help documentation through MCP, and a reusable snapshot with agents pre-installed.
+- Result: Churn fell from 24% to 9%, MRR increased by $4,200 per month, and 30 clients onboarded with AI support and no additional developer needed.
+- Stack: Claude Code, GHL SaaS Mode, Next.js, MCP Server, Pinecone RAG, Supabase RLS
+
+## Frequently asked questions
+### What Working With Us Looks Like
+**Q: How does working with you start?**
+A: Share one manual task. I will reply with a short Loom video plan for your GHL, HubSpot, or Shopify setup using Claude Code, MCP, and n8n, before you pay.
+
+**Q: What do you need from us to get started?**
+A: A 15-minute walkthrough and temporary access to your GHL sub-account, HubSpot private app, or Shopify API. No cleanup is needed.
+
+**Q: How do you charge?**
+A: Fixed price per automation, split into milestones. You pay per milestone delivered.
+
+**Q: How long does it take?**
+A: Typically 3-7 days: Day 1 for the plan, Days 2-4 for the build, Days 5-6 for live tests, and Day 7 for handover.
+
+**Q: Do we need to be technical or know Claude Code?**
+A: No. Your team can trigger an automation by name, such as "run weekly follow-up". No coding is needed.
+
+**Q: What stack do you use? Do we need to switch tools?**
+A: Claude Code, MCP servers, Claude API, n8n, GHL, HubSpot, and Shopify APIs, plus Supabase or Pinecone when useful. You keep your existing tools.
+
+**Q: Is our CRM and customer data secure?**
+A: Access is scoped to least-privilege keys, customer data is not used for model training, and systems can use row-level security and audit logs. An NDA is available.
+
+**Q: What if the automation breaks?**
+A: Failures trigger an alert with the error details instead of failing silently. A 14-day bug-fix period is included.
+
+**Q: Do we own everything? Are we locked to you?**
+A: You own the delivered code, MCP configurations, n8n workflows, prompts, and SOPs. There is no vendor lock-in.
+
+**Q: What tasks do you automate best?**
+A: CRM updates, lead follow-up, Shopify RAG support, and missed-call-to-booking workflows. Well-scoped automations can save teams 10+ hours per week.
+
+### AI Agents & Multi-Agent Systems
+**Q: What is an AI agent versus a normal chatbot?**
+A: A chatbot replies in conversation. An AI agent can take an action, such as qualifying a lead in GHL, updating HubSpot, or booking a meeting.
+
+**Q: What are specialist sub-agents?**
+A: A main agent can delegate work to focused specialists such as a qualifier, follow-up agent, or support agent. This can make complex workflows more reliable than one general-purpose bot.
+
+**Q: Do we need to know Claude Code to use it?**
+A: No. Your team can trigger an automation by name, such as "run weekly follow-up". No coding is needed.
+
+**Q: Can agents work across GHL, HubSpot, and Shopify at once?**
+A: Yes. An agent can read a Shopify order, update a HubSpot record, and create a GHL opportunity through connected MCP tools.
+
+**Q: What makes your agents keep working reliably?**
+A: Production workflows include hooks, error handling, logging, and instant alerts so failures are visible and can be fixed.
+
+### Model Context Protocol (MCP) Servers
+**Q: What is Model Context Protocol (MCP)?**
+A: MCP is an open protocol for connecting AI assistants such as Claude to tools and data sources, including GHL, HubSpot, and Shopify.
+
+**Q: Why MCP instead of Zapier?**
+A: Zapier connects predefined app events. MCP lets an AI model reason over a task and call approved tools across systems. A self-hosted setup can avoid per-task platform fees.
+
+**Q: Do we need to host MCP servers?**
+A: Not to get started. I can host the first version, then hand over a documented Node.js setup for your team to run.
+
+**Q: How is your MCP server work different from generic MCP setups?**
+A: The protocol is the same; Model Context Protocol is its official name. I build the server integrations with the hooks, plugins, and access controls the workflow needs.
+
+**Q: Can MCP connect to our custom database?**
+A: Yes. Integrations can connect to systems such as Supabase, PostgreSQL with row-level security, or Pinecone for retrieval-augmented generation (RAG).
+
+**Q: Is MCP secure?**
+A: Security depends on implementation. I use least-privilege access, secure key handling, and audit logging where supported.
+
+### n8n & Workflow Automation
+**Q: Why n8n instead of Zapier or Make?**
+A: n8n can be self-hosted and gives teams more control over workflows and infrastructure. It also connects well with Claude and MCP.
+
+**Q: Can you fix our broken n8n workflows?**
+A: Yes. I can diagnose the workflow, add error handling and retries, and configure alerts so failures are easier to catch.
+
+**Q: How do you prevent silent API failures?**
+A: Workflows can use try/catch handling, logs, retries, and Slack or email alerts to surface API errors.
+
+**Q: Can n8n call Claude Code?**
+A: n8n can call the Claude API, which can use connected MCP tools to work with GHL, HubSpot, Shopify, and other approved systems.
+
+**Q: Do we need to host n8n?**
+A: No. I can host the first version and provide handover documentation so you can manage or move it later.
+
+**Q: Can you migrate from Make or Zapier to n8n?**
+A: Yes. I can map the existing workflows, rebuild them in n8n, and add production-focused error handling and monitoring.
+
+### Security, Ownership & Data
+**Q: Do you store our CRM data?**
+A: The intended setup keeps customer records in your systems, such as GHL, HubSpot, Shopify, or Supabase. Integrations access only the data needed for the workflow.
+
+**Q: How do you handle API keys?**
+A: Keys are scoped to least privilege and stored in a secure secrets manager or platform credential store, not exposed in workflow text.
+
+**Q: Do we own everything after delivery?**
+A: Yes. You own the delivered code, MCP configurations, n8n workflows, prompts, and SOPs.
+
+**Q: Do you sign an NDA?**
+A: Yes. An NDA can be signed before project access or discovery begins.
+
+**Q: What if we need to revoke access?**
+A: You can revoke or rotate the private-app/API credentials at any time. Access is granted through your accounts, not personal credentials.
+
+### Voice AI & Missed-Call Automation
+**Q: How does missed-call automation work?**
+A: A call platform such as Twilio can trigger an AI follow-up, qualify the inquiry, update GHL, and offer appointment times through connected calendar tools.
+
+**Q: How many calls can it handle?**
+A: Capacity depends on the voice provider, concurrency limits, call length, and fallback design. We size and test the system against your expected call volume before launch.
+
+**Q: What if AI cannot answer?**
+A: The workflow can hand the conversation to a person with the transcript and CRM record available, so the customer is not left without a next step.
+
+**Q: Can it work with HubSpot too?**
+A: Yes. The workflow can update a HubSpot contact and book a meeting through HubSpot Meetings or another connected calendar.
