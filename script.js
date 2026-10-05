@@ -1,5 +1,11 @@
 document.documentElement.classList.add('js');
 
+const EMAILJS_CONFIG = {
+  serviceId: 'service_upjea3g',
+  templateId: 'template_ozmro0m',
+  publicKey: 'CM8uP5utEJMEReOv8'
+};
+
 const megaMenuGroups = [
   {
     title: 'Hire Experts',
@@ -678,8 +684,6 @@ function wireFaqGroups(container) {
   });
 }
 
-const bookingEmail = 'onifadetoheeb068@gmail.com';
-
 function openBookingModal(defaultTab = 'project') {
   const modal = document.getElementById('booking-modal');
   if (!modal) return;
@@ -751,45 +755,48 @@ function formatNigeriaTime(hour) {
   return `${twelveHour}:00 ${suffix}`;
 }
 
-function formatMailtoBody(fields) {
-  const lines = [
-    'Here is the project information:',
-    '',
-    `Name: ${fields.name}`,
-    `Email: ${fields.email}`,
-    `Phone: ${fields.phone}`,
-    `Desired project: ${fields.project}`,
-    `Topic to discuss: ${fields.topics}`
-  ];
+async function sendBookingEmail(templateParams) {
+  const { serviceId, templateId, publicKey } = EMAILJS_CONFIG;
+  if ([serviceId, templateId, publicKey].some((value) => value.startsWith('YOUR_'))) {
+    throw new Error('EmailJS is not configured. Add the service ID, template ID, and public key in script.js.');
+  }
 
-  return lines.join('\n');
-}
-
-function formatCallMailtoBody(fields) {
-  const date = fields.date || 'Not specified';
-  const time = fields.time || 'Not specified';
-  const nigeriaTimeText = `${formatNigeriaTime(Number(time.split(':')[0]))} WAT`;
-  const dateLabel = new Date(`${date}T${time}:00+01:00`);
-  const localFormatter = new Intl.DateTimeFormat(undefined, {
-    dateStyle: 'medium',
-    timeStyle: 'short'
+  const response = await fetch('https://api.emailjs.com/api/v1.0/email/send', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      service_id: serviceId,
+      template_id: templateId,
+      user_id: publicKey,
+      template_params: templateParams
+    })
   });
 
-  const lines = [
-    'Here is the scheduled call request:',
-    '',
-    `Preferred date: ${date}`,
-    `Nigeria time: ${nigeriaTimeText}`,
-    `Local time shown to the client: ${localFormatter.format(dateLabel)}`,
-    `Topic to discuss: ${fields.topics}`
-  ];
-
-  return lines.join('\n');
+  if (!response.ok) {
+    const details = await response.text();
+    throw new Error(`EmailJS request failed (${response.status}): ${details}`);
+  }
 }
 
-function sendBookingMailto(subject, body) {
-  const mailtoLink = `mailto:${bookingEmail}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-  window.location.href = mailtoLink;
+async function submitBookingForm(form, submitButton, status, templateParams) {
+  const originalButtonText = submitButton.textContent;
+  submitButton.disabled = true;
+  submitButton.textContent = 'Sending...';
+  status.textContent = '';
+  status.classList.remove('is-error');
+
+  try {
+    await sendBookingEmail(templateParams);
+    status.textContent = 'Thanks! Your message has been sent.';
+    form.reset();
+  } catch (error) {
+    console.error('Unable to send booking email:', error);
+    status.textContent = 'Sorry, your message could not be sent. Please try again or email onifadetoheeb068@gmail.com directly.';
+    status.classList.add('is-error');
+  } finally {
+    submitButton.disabled = false;
+    submitButton.textContent = originalButtonText;
+  }
 }
 
 function setupStatsCounters() {
@@ -934,7 +941,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
   const projectForm = document.getElementById('project-inquiry-form');
   if (projectForm) {
-    projectForm.addEventListener('submit', (event) => {
+    projectForm.addEventListener('submit', async (event) => {
       event.preventDefault();
 
       const formData = new FormData(projectForm);
@@ -951,9 +958,21 @@ document.addEventListener('DOMContentLoaded', async () => {
         return;
       }
 
-      sendBookingMailto(
-        `Project inquiry from ${fields.name}`,
-        formatMailtoBody(fields)
+      await submitBookingForm(
+        projectForm,
+        projectForm.querySelector('[type="submit"]'),
+        projectForm.querySelector('.booking-form-status'),
+        {
+          request_type: 'Project inquiry',
+          subject: `Project inquiry from ${fields.name}`,
+          from_name: fields.name,
+          reply_to: fields.email,
+          phone: fields.phone,
+          project: fields.project,
+          preferred_date: '',
+          preferred_time: '',
+          topics: fields.topics
+        }
       );
     });
   }
@@ -970,25 +989,43 @@ document.addEventListener('DOMContentLoaded', async () => {
   buildLocalCallTimeOptions(callDate?.value || new Date().toISOString().slice(0, 10));
 
   if (callForm) {
-    callForm.addEventListener('submit', (event) => {
+    callForm.addEventListener('submit', async (event) => {
       event.preventDefault();
 
       const formData = new FormData(callForm);
       const fields = {
         date: formData.get('date')?.toString().trim() || '',
         time: formData.get('time')?.toString().trim() || '',
+        email: formData.get('email')?.toString().trim() || '',
+        phone: formData.get('phone')?.toString().trim() || '',
         topics: formData.get('topics')?.toString().trim() || ''
       };
 
-      if (!fields.date || !fields.time || !fields.topics) {
-        alert('Please select a date and time and add your topic before sending your request.');
+      if (!fields.date || !fields.time || !fields.email || !fields.phone || !fields.topics) {
+        alert('Please select a date and time, enter your email and phone number, and add your topic before sending your request.');
         return;
       }
 
-      sendBookingMailto(
-        `Discovery call request for ${fields.date}`,
-        formatCallMailtoBody(fields)
+      await submitBookingForm(
+        callForm,
+        callForm.querySelector('[type="submit"]'),
+        callForm.querySelector('.booking-form-status'),
+        {
+          request_type: 'Discovery call request',
+          subject: `Discovery call request for ${fields.date}`,
+          from_name: fields.email,
+          reply_to: fields.email,
+          phone: fields.phone,
+          project: '',
+          preferred_date: fields.date,
+          preferred_time: `${fields.time} WAT`,
+          topics: fields.topics
+        }
       );
+      if (!callForm.querySelector('.booking-form-status').classList.contains('is-error')) {
+        callDate.value = new Date().toISOString().slice(0, 10);
+        buildLocalCallTimeOptions(callDate.value);
+      }
     });
   }
 
